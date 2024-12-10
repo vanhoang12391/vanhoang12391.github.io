@@ -293,7 +293,7 @@
         var EmpName="";
         var EmpId=0;
         var tMax = 7200,
-          height = $('.number p')[0].offsetHeight,
+          height = 0,
           speeds = [],
           r = [0,0,0,0],
           reels = [
@@ -312,6 +312,7 @@
           });
           $msg = $('.message-win');
           $('.btnSpin').click(action);
+          height = $('.number p')[0]?$('.number p')[0].offsetHeight * 10 : 800;
         }
 
         function action(){
