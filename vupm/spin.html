@@ -12,10 +12,25 @@
        50% { color: #c90000;  } 
        100% { color: #fccd4d;  } 
      }
-    @keyframes animation {
-      0%{width: 40%;right: 30%}
-      50%{width: 42%;right: 29%}
-      100%{width: 40%;right: 30%}
+    @keyframes zoom {
+      0%{width: 20%;}
+      50%{width: 22%;}
+      100%{width: 20%;}
+    }
+    @keyframes rotate {
+      0%{transform: rotate(0deg);}
+      50%{transform: rotate(10deg);}
+      100%{transform: rotate(0deg);}
+    }
+    @keyframes zoom-rotate {
+      0%{font-size: 45px; transform: rotate(-2deg);}
+      50%{font-size: 47px; transform: rotate(2deg);}
+      100%{font-size: 45px; transform: rotate(-2deg);}
+    }
+    @keyframes border {
+      0%{border: 2px solid #fccd4d;}
+      50%{border: 2px solid #c90000;}
+      100%{border: 2px solid #fccd4d;}
     }
     /* CSS reset { */
     * {
@@ -48,34 +63,39 @@
       position: relative;
     }
     .logo{
-      height: 100px;
+      height: 140px;
       position: absolute;
+      margin-left: 20px;
     }
     .logo img{
       height: 100%;
     }
     .title{
-      height: 100px;
+      height: 140px;
       overflow: hidden;
       text-align: center;
     }
-    .title p{
+    .title p{    
       font-size: 50px;
-      font-weight: 900;    
+      font-weight: 900;
       height: 100%;
-      text-shadow: 0px 0px 5px #ffed82;
-      line-height: 2.2;
+      text-shadow: 0px 0px 5px #e73726;
+      line-height: 3;
+      color: #0082be;
     }
     .top-left{
       position: absolute;
       top: 300px;
+      padding-right: 50px;
+      box-sizing: border-box;
     }
     .img-2025 {
-      width: 50%;
+      width: 45%;
     }
     .dua-hau{
       float: right;
       width: 20%;
+      animation: rotate 4000ms infinite;
     }
     .top-right{
       width: 25%;
@@ -84,35 +104,41 @@
       transform: scalex(-1) rotate(45deg);
       width: 20%;
       float: left;
+      animation: zoom 2000ms infinite;
     }
-    .contMid{
+    .contMid-title {
+      padding: 20px;
+      height: 100px;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     .contMid-title p {
       text-align: center;
-      font-size: 40px;
-      font-weight: 700;
-      color: #0292d5;
-      text-shadow: 1px 1px 3px #d91700;
-    }
-    p.message-win {
-      font-size: 30px;
+      font-size: 45px;
       font-weight: 900;
+      color: #e71f2c;
+      text-shadow: 1px 1px 3px #ffdd63;
+      animation: zoom-rotate 3000ms infinite;
+    }
+    p.message-win {    
+      margin-top: 20px;
+      font-size: 30px;
+      font-weight: 900;    
+      text-align: center;
       display: inline-block;
       background-color: #ffe3978f;
       padding: 10px;
+      box-sizing: border-box;
       border-radius: 10px;    
-      box-shadow: 0px 0px 20px 1px #ff0000;
     }
     .contMid .spin-roll{    
       width: 500px;
-        margin: 0 auto;
-        display: flex;
-        background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        background-image: linear-gradient(to right, #ffb100, #62bf5e);
-        box-shadow: 3px 4px 5px 2px #cf160e;
-        margin-bottom: 20px;
+      margin-left: calc((100% - 500px) / 2);
+      padding: 30px;
+      border-radius: 10px;
+      background-image: linear-gradient(to right, #ffb100, #62bf5e);
+      box-shadow: 3px 4px 5px 2px #cf160e;
+      box-sizing: border-box;
     }
     .contMid .group-number{
         width: 70%;
@@ -142,7 +168,8 @@
       font-weight: 900;
     }
     .contMid .group-btn{
-      width: 30%;
+      width: 28%;
+      margin-left: 2%;
       align-content: center;
       text-align: center;
     }
@@ -150,11 +177,13 @@
       background: rgba(251, 223, 147, 1);
       border-radius: 10px;
       height: 100px;
+      width: 100%;
       padding: 0 5px;
       border: 5px solid rgba(252, 205, 77, 1);
       font-size: 36px;
       font-weight: 900;
       color: #c90000;
+      animation: border 1000ms infinite;
     }
     .contMid .group-btn .btnSpin:active{
         color: #ffffff;
@@ -175,7 +204,7 @@
       padding: 10px;
       box-sizing: border-box;
     }
-    .contBot p{
+    .message-win{
       -webkit-animation: myColor 700ms infinite;
       -moz-animation: myColor 700ms infinite; 
       -o-animation: myColor 700ms infinite; 
@@ -199,7 +228,7 @@
     <div class="container full">
       <div class="pyro"><div class="before"></div><div class="after"></div></div>
       <div class="effect-all">
-        <!-- <img class="chuc-mung" style="position: absolute; top: 60vh; left: 27vw;" src="phao-hoa-1.gif"/> -->
+         <!-- <img class="chuc-mung" style="position: absolute; top: 60vh; left: 27vw;" src="logo_VU.png"/>  -->
       </div>
       <div class="contTop full left">
         <div class="title-main full left">
@@ -221,25 +250,28 @@
           <img class="img-2025 full" src="icon-more/canh-mai.png"/>
         </div> -->
         <div class="effect">
-          <img style="position: absolute; top: 12vh; left: 25vw;" src="effect/phao-hoa-3.gif"/>
-          <img style="position: absolute; top: 7vh; right: 20vw;" src="effect/phao-hoa-3.gif"/>
+          <img style="position: absolute; top: 12%; left: 12%;" src="effect/phao-hoa-3.gif"/>
+          <img style="position: absolute; top: 7%; right: 18%;" src="effect/phao-hoa-3.gif"/>
         </div>
       </div>
       <div class="contMid full left">
         <div class="contMid-title full left">
-          <p>Vòng Quay May Mắn</p>
+          <p>Chúc Mừng Năm Mới</p>
         </div>
-        <div class="spin-roll">
+        <div class="spin-roll left">
           <audio class="audio" src="sound/spinning.mp3"></audio>
           <audio class="audio-win" src="sound/winning.mp3"></audio>
-          <div class="group-number">
+          <div class="group-number left">
             <div class="number">1</div>
             <div class="number">2</div>
             <div class="number">3</div>
             <div class="number">4</div>
           </div>
-          <div class="group-btn">
-            <button class="btnSpin">QUAY</button>
+          <div class="group-btn left">
+            <button class="btnSpin"><span>Quay</span></button>
+          </div>
+          <div class="message full left">
+            <p class="message-win full">Vòng quay may mắn</p>
           </div>
         </div>
         <div class="img-gift">
@@ -247,10 +279,6 @@
         </div>
       </div>
       <div class="contBot full left">
-        <div class="message">
-          <p class="message-win"></p>
-        </div>
-      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -312,7 +340,7 @@
           });
           $msg = $('.message-win');
           $('.btnSpin').click(action);
-          height = $('.number p')[0]?$('.number p')[0].offsetHeight * 10 : 800;
+          height = $('.number p')[0]?$('.number p')[0].offsetHeight *10 : 800;
         }
 
         function action(){
@@ -344,7 +372,7 @@
             speeds[i] = Math.random() + .5;	//tạo tốc độ ngẫu nhiên
             r[i]  = lsId[i] * height / 10;//lấy 4 vị trí cần scroll tới
           }
-          $msg.html('Đang lựa chọn người may mắn...');
+          $msg.html('Xin chúc mừng .......');
           //thực hiện roll
           animate();
         }
