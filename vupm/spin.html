@@ -5,80 +5,105 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <style>
-      @-webkit-keyframes myColor {
-       0% { color: #e71f2c; } 
-       50% { color: #F8CD0A;  } 
-       100% { color: #e71f2c;  } 
-     }
-     @-moz-keyframes myColor { 
-       0% { color: #e71f2c; } 
-       50% { color: #F8CD0A;  } 
-       100% { color: #e71f2c;  } 
-     }
-     @-o-keyframes myColor { 
-       0% { color: #e71f2c; } 
-       50% { color: #F8CD0A;  } 
-       100% { color: #e71f2c;  } 
-     }
+    <link rel="stylesheet" href="style/style.css"/>
+    <style> 
      @keyframes myColor { 
-       0% { color: #e71f2c; } 
-       50% { color: #F8CD0A;  } 
-       100% { color: #e71f2c;  } 
+       0% { color: #fccd4d; } 
+       50% { color: #c90000;  } 
+       100% { color: #fccd4d;  } 
      }
+    @keyframes animation {
+      0%{width: 40%;right: 30%}
+      50%{width: 42%;right: 29%}
+      100%{width: 40%;right: 30%}
+    }
     /* CSS reset { */
-    body,div,h1,button,p{margin:0;padding:0}
-    button{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
-    a:active,a:focus {outline: 0}
-    /* } */
+    * {
+      margin:0
+      ;padding:0
+    }
     
     body, input, select, textarea {
-      /* font:18px/18px "Helvetica Neue",Helvetica,Arial,sans-serif; */
       font-family: "Open Sans", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 800;
-      font-style: normal;
-      font-variation-settings: "wdth" 100;
     }
     p{
-      font-size: 45px;
       color: #e71f2c;
     }
+    .full{
+      width: 100%;
+    }
+    .left{
+      float: left;
+    }
     .container{
-      display: flex;
-      flex-direction: column;
       height: 100vh;
+      background-image: url(background/anh-nen-tet-1.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     .contTop{
-      flex: 6;
-      position: relative;
       text-align: center;
-      padding: 10px;
-      box-sizing: border-box;
     }
-    .contTop .title-main{
-      line-height: 1.8;
-      color: #c90000;
-      text-shadow: 0px 0px 5px #ffed82;
-      font-weight: 900;
+    .title-main {
+      position: relative;
+    }
+    .logo{
+      height: 100px;
+      position: absolute;
+    }
+    .logo img{
+      height: 100%;
+    }
+    .title{
+      height: 100px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .title p{
       font-size: 50px;
+      font-weight: 900;    
+      height: 100%;
+      text-shadow: 0px 0px 5px #ffed82;
+      line-height: 2.2;
+    }
+    .top-left{
+      position: absolute;
+      top: 300px;
+    }
+    .img-2025 {
+      width: 50%;
+    }
+    .dua-hau{
+      float: right;
+      height: 100%;
+      width: 20%;
+    }
+    .top-right{
+      width: 25%;
+    }
+    .shrimp{
+      transform: scalex(-1) rotate(45deg);
+      height: 100%;
+      width: 20%;
+      float: left;
     }
     .contMid{
-      flex: 2;
-      display: flex;
-      flex-direction: column;
-      position: relative;
     }
-    .contMid-title {
-        flex: 1;
-        text-align: center;
-        line-height: 1.5;
-    }
-    .contMid-title p{
-      font-size: 50px;
+    .contMid-title p {
+      text-align: center;
+      font-size: 40px;
       font-weight: 700;
-      text-shadow: 2px 2px 5px #aa0000;
-      color: #0481c4;
+      color: #0292d5;
+      text-shadow: 1px 1px 3px #d91700;
+    }
+    p.message-win {
+      font-size: 30px;
+      font-weight: 900;
+      display: inline-block;
+      background-color: #ffe3978f;
+      padding: 10px;
+      border-radius: 10px;    
+      box-shadow: 0px 0px 20px 1px #ff0000;
     }
     .contMid .spin-roll{    
       width: 500px;
@@ -138,8 +163,16 @@
         background: rgb(248, 184, 7);
         border: 5px solid rgb(185 137 3);
     }
+    .img-gift {
+      position: absolute;
+      top: 55%;
+      right: 5%;
+      width: 20%;
+    }
+    .img-gift img{
+      width: 100%;
+    }
     .contBot{
-      flex: 1;
       text-align: center;
       padding: 10px;
       box-sizing: border-box;
@@ -150,67 +183,57 @@
       -o-animation: myColor 700ms infinite; 
       animation: myColor 700ms infinite;
     }
-    .phao-trai, .phao-phai, .canh-mai, .dua-hau, .logo, .img-2025, .gift{
-      position: absolute;
+    @media only  screen and (max-width: 768px) { 
+      .top-left{
+        position: absolute;    
+        top: 8vh;
+      }
     }
-    .logo{
-      top: 0;
-      left: 5vw;
-      width: 10%;
-    }
-    .phao-trai {
-      top: 15%;
-      left: 11%;
-      width: 20%;
-    }
-    .canh-mai {
-      width: 30%;
-      top: 5%;
-      right: 0;
-    }
-    .img-2025 {
-      width: 40%;
-      top: 17%;
-      right: 30%;
-    }
-    .chuc-mung{
-      display: none;
-    }
-    .chuc-mung.active{
-      display: block;
-    }
-    .gift {
-      width: 20%;
-      bottom: 0;
-      right: 75%;
-    }
-    .dua-hau {
-      width: 15%;
-      bottom: 0;
-      left: 8%;
+    @media only  screen and (max-width: 430px) { 
+      .top-left{
+        position: absolute;    
+        top: 8vh;
+      }
     }
     </style>
   </title>
   <body>
-    <div class="container">
-      <div class="contTop">
-        <p class="title-main">TIỆC TẤT NIÊN VIỆT ÚC - PHÙ MỸ</p>
-        <img class="img-2025" src="2025.jpg"/>
-        <img class="phao-trai" src="day-phao.png"/>
-        <img class="canh-mai" src="canh-mai.png"/>
-        <img class="logo"src="logo_VU.png"/>
-        <img class="chuc-mung" style="position: absolute; top: 60vh; left: 27vw;" src="phao-hoa-1.gif"/>
-        <img style="position: absolute; top: 12vh; left: 25vw;" src="phao-hoa-3.gif"/>
-        <img style="position: absolute; top: 7vh; right: 20vw;" src="phao-hoa-3.gif"/>
-        <!-- <img style="position: absolute; width: 30%; bottom: 0; left: 35vw;" src="phao-hoa-2.gif"/> -->
+    <div class="container full">
+      <div class="pyro"><div class="before"></div><div class="after"></div></div>
+      <div class="effect-all">
+        <!-- <img class="chuc-mung" style="position: absolute; top: 60vh; left: 27vw;" src="phao-hoa-1.gif"/> -->
       </div>
-      <div class="contMid">
-        <div class="contMid-title">
+      <div class="contTop full left">
+        <div class="title-main full left">
+          <div class="logo left">
+            <img src="logo_VU.png"/>
+          </div>
+          <div class="title left full">
+            <p>TIỆC TẤT NIÊN VIỆT ÚC - PHÙ MỸ</p>
+          </div>
+        </div>
+        <div class="top-left full left">
+          <img class="dua-hau" src="icon-more/dua-hau.png"/>
+          <img class="shrimp" src="icon-more/shrimp.png"/>
+        </div>
+        <div class="top-mid full left">
+          <img class="img-2025" src="snake/2025-1.png"/>
+        </div>
+        <!-- <div class="top-right left">
+          <img class="img-2025 full" src="icon-more/canh-mai.png"/>
+        </div> -->
+        <div class="effect">
+          <img style="position: absolute; top: 12vh; left: 25vw;" src="effect/phao-hoa-3.gif"/>
+          <img style="position: absolute; top: 7vh; right: 20vw;" src="effect/phao-hoa-3.gif"/>
+        </div>
+      </div>
+      <div class="contMid full left">
+        <div class="contMid-title full left">
           <p>Vòng Quay May Mắn</p>
         </div>
         <div class="spin-roll">
-          <audio class="audio" src="spinning.mp3"></audio>
-          <audio class="audio-win" src="chien-thang.mp3"></audio>
+          <audio class="audio" src="sound/spinning.mp3"></audio>
+          <audio class="audio-win" src="sound/winning.mp3"></audio>
           <div class="group-number">
             <div class="number">1</div>
             <div class="number">2</div>
@@ -221,11 +244,14 @@
             <button class="btnSpin">QUAY</button>
           </div>
         </div>
-        <img class="gift" src="gift.jpeg"/>
-        <!-- <img class="dua-hau" src="dua-hau.png"/> -->
+        <div class="img-gift">
+          <img src="icon-more/gifts.png"/>
+        </div>
       </div>
-      <div class="contBot">
-        <p class="message"></p>
+      <div class="contBot full left">
+        <div class="message">
+          <p class="message-win"></p>
+        </div>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -286,7 +312,7 @@
           $reels = $('.number').each(function(i, el){
             el.innerHTML = '<p>' + reels[i].join('</p><p>') + '</p>'
           });
-          $msg = $('.message');
+          $msg = $('.message-win');
           $('.btnSpin').click(action);
         }
 
