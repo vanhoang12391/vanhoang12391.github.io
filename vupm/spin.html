@@ -121,16 +121,24 @@
       text-shadow: 1px 1px 3px #ffdd63;
       animation: zoom-rotate 3000ms infinite;
     }
-    p.message-win {    
+    .message-win {    
       margin-top: 20px;
       font-size: 30px;
       font-weight: 900;    
+      color: #e71f2c;
       text-align: center;
       display: inline-block;
       background-color: #ffe3978f;
       padding: 10px;
       box-sizing: border-box;
       border-radius: 10px;    
+      /* -webkit-animation: myColor 700ms infinite;
+      -moz-animation: myColor 700ms infinite; 
+      -o-animation: myColor 700ms infinite;  */
+      /* animation: myColor 700ms infinite; */
+    }
+    .message-win-animation{
+      animation: myColor 700ms infinite;
     }
     .contMid .spin-roll{    
       width: 500px;
@@ -205,12 +213,6 @@
       padding: 10px;
       box-sizing: border-box;
     }
-    .message-win{
-      -webkit-animation: myColor 700ms infinite;
-      -moz-animation: myColor 700ms infinite; 
-      -o-animation: myColor 700ms infinite; 
-      animation: myColor 700ms infinite;
-    }
     @media only  screen and (max-width: 768px) { 
       .top-left{
         position: absolute;    
@@ -222,6 +224,93 @@
         position: absolute;    
         top: 8vh;
       }
+    }
+    
+    /**
+    * ==============================================
+    * Dot Floating
+    * ==============================================
+    */
+    .dot-floating {
+      position: relative;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #e71f2c;
+      color: #e71f2c;
+      animation: dot-floating 3s infinite cubic-bezier(0.15, 0.6, 0.9, 0.1);
+    }
+    .dot-floating::before, .dot-floating::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+    }
+    .dot-floating::before {
+      left: -12px;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #e71f2c;
+      color: #e71f2c;
+      animation: dot-floating-before 3s infinite ease-in-out;
+    }
+    .dot-floating::after {
+      left: -24px;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #e71f2c;
+      color: #e71f2c;
+      animation: dot-floating-after 3s infinite cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    @keyframes dot-floating {
+      0% {
+        left: calc(-50% - 5px);
+      }
+      75% {
+        left: calc(50% + 105px);
+      }
+      100% {
+        left: calc(50% + 105px);
+      }
+    }
+    @keyframes dot-floating-before {
+      0% {
+        left: -50px;
+      }
+      50% {
+        left: -12px;
+      }
+      75% {
+        left: -50px;
+      }
+      100% {
+        left: -50px;
+      }
+    }
+    @keyframes dot-floating-after {
+      0% {
+        left: -100px;
+      }
+      50% {
+        left: -24px;
+      }
+      75% {
+        left: -100px;
+      }
+      100% {
+        left: -100px;
+      }
+    }
+    .stage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 15px 0;
+      overflow: hidden;
     }
     </style>
   </title>
@@ -272,7 +361,9 @@
             <button class="btnSpin"><span>Quay</span></button>
           </div>
           <div class="message full left">
-            <p class="message-win full">Vòng quay may mắn</p>
+            <div class="message-win full">
+              Vòng Quay May Mắn
+            </div>
           </div>
         </div>
         <div class="img-gift">
@@ -346,6 +437,8 @@
 
         function action(){
           if (start !== undefined) return;
+          $msg.removeClass('message-win-animation');
+          $msg.html('<div class="stage"><div class="dot-floating"></div></div>');
           //bật âm thanh quay thưởng
           $('.audio')[0].play();
           //trộn thứ tự danh sách nhân viên
@@ -373,7 +466,7 @@
             speeds[i] = Math.random() + .5;	//tạo tốc độ ngẫu nhiên
             r[i]  = lsId[i] * height / 10;//lấy 4 vị trí cần scroll tới
           }
-          $msg.html('Xin chúc mừng .......');
+          //$msg.html('Xin chúc mừng .......');
           //thực hiện roll
           animate();
         }
@@ -393,10 +486,7 @@
         }
 
         function check(){
-          $('.chuc-mung').addClass('active');
-          setTimeout(function(){
-            $('.chuc-mung').removeClass('active');
-          }, 3000);
+          $msg.addClass('message-win-animation');
           $('.audio-win')[0].play();
           $msg.html(EmpId + ' - ' + EmpName);
         }
