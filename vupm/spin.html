@@ -383,10 +383,12 @@
         }
         else if(key == 100)
         {
+          console.log('Refreshing Data ...');
           localStorage.removeItem("EmpData");
           localStorage.setItem("EmpData",DataFactory,7);
           empData = DataFactory;
           empDataJson = JSON.parse(empData);
+          console.log('Refreshing Data Success!!!');
         }
       });
       var empData = undefined;
