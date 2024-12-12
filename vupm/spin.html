@@ -453,6 +453,7 @@
             if(empDataJson[index].IsSpin === 0)
               index = -1;
           };
+          console.log(empDataJson[index]);
           //sau khi lấy đc 1 nhân viên, tiến hành update thuộc tính IsPin = 0 tức là đánh dấu nhân viên này đã trúng thưởng ko cho trúng lần tiếp theo
           empDataJson[index].IsSpin = 0;
           //xóa dữ liệu lưu ở localStorage và cập nhật dữ liệu mới
