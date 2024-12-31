@@ -96,7 +96,7 @@
     }
     .dua-hau{
       float: right;
-      width: 18%;
+      width: 12%;
       animation: rotate 4000ms infinite;
     }
     .top-right{
@@ -104,7 +104,7 @@
     }
     .shrimp{
       transform: scalex(-1) rotate(45deg);
-      width: 18%;
+      width: 5%;
       float: left;
       animation: zoom 2000ms infinite;
     }
@@ -313,6 +313,12 @@
       padding: 15px 0;
       overflow: hidden;
     }
+    .hidden{
+      display: none;
+    }
+    .show{
+      display: block;
+    }
     #canvas {
     position: absolute;
     top: 0;
@@ -347,8 +353,8 @@
           <img class="img-2025 full" src="icon-more/canh-mai.png"/>
         </div> -->
         <div class="effect">
-          <img style="position: absolute; bottom: 12%; left: 35%;" src="effect/phao-hoa-3.gif"/>
-          <img style="position: absolute; bottom: 6%; right: 38%;" src="effect/phao-hoa-3.gif"/>
+          <img class="effect hidden" style="position: absolute; bottom: 12%; left: 35%;" src="effect/phao-hoa-3.gif"/>
+          <img class="effect hidden" style="position: absolute; bottom: 6%; right: 38%;" src="effect/phao-hoa-3.gif"/>
         </div>
       </div>
       <div class="contMid full left">
@@ -446,6 +452,7 @@
 
         function action(){
           if (start !== undefined) return;
+          $('.effect').addClass('hidden')
           $('.message').css('display', 'block');
           $msg.removeClass('message-win-animation');
           $msg.html('<div class="stage"><div class="dot-floating"></div></div>');
@@ -499,6 +506,7 @@
 
         function check(){
           $msg.addClass('message-win-animation');
+          $('.effect').removeClass('hidden')
           $('.audio-win')[0].play();
           $msg.html(EmpId + ' - ' + EmpName);
         }
