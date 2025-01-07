@@ -456,6 +456,8 @@
           $('.message').css('display', 'block');
           $msg.removeClass('message-win-animation');
           $msg.html('<div class="stage"><div class="dot-floating"></div></div>');
+          //tắt âm thanh trúng thưởng
+          $('.audio-win')[0].currentTime=100;
           //bật âm thanh quay thưởng
           $('.audio')[0].play();
           //trộn thứ tự danh sách nhân viên
@@ -507,6 +509,7 @@
         function check(){
           $msg.addClass('message-win-animation');
           $('.effect').removeClass('hidden')
+          $('.audio-win')[0].currentTime=0;
           $('.audio-win')[0].play();
           $msg.html(EmpId + ' - ' + EmpName);
         }
