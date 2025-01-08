@@ -443,16 +443,22 @@
           localStorage.setItem("EmpData",DataFactory,7);
           empData = DataFactory;
           empDataJson = JSON.parse(empData);
+          localStorage.removeItem("CountSpin");
+          localStorage.setItem("CountSpin",0,7);
+          countSpin = 0;
           console.log('Refreshing Data Success!!!');
         }
       });
       var empData = undefined;
       empData = localStorage.getItem("EmpData");
+      countSpin = localStorage.getItem("CountSpin");
       if(empData === undefined || empData === '' || empData === null )
       {
         localStorage.setItem("EmpData",DataFactory,7);
         empData = DataFactory;
-        }
+        localStorage.setItem("CountSpin",0,7);
+        countSpin=0;
+      }
       var empDataJson = JSON.parse(empData);
 
       function Sort(nv1, nv2) {
@@ -515,9 +521,13 @@
           console.log(empDataJson[index]);
           //sau khi lấy đc 1 nhân viên, tiến hành update thuộc tính IsPin = 0 tức là đánh dấu nhân viên này đã trúng thưởng ko cho trúng lần tiếp theo
           empDataJson[index].IsSpin = 0;
+          //tăng số lần quay
+          countSpin++;
           //xóa dữ liệu lưu ở localStorage và cập nhật dữ liệu mới
           localStorage.removeItem("EmpData");
           localStorage.setItem("EmpData", JSON.stringify(empDataJson), 7);
+          localStorage.removeItem("CountSpin");
+          localStorage.setItem("CountSpin",countSpin,7);
           //lấy tên và mã nhân viên ra biến riêng
           EmpId = empDataJson[index].EmpId;
           EmpName = empDataJson[index].EmpName;
@@ -548,7 +558,6 @@
         }
 
         function check(){
-          countSpin++;
           $msg.addClass('message-win-animation');
           $('.effect').removeClass('hidden')
           $('.audio-win')[0].currentTime=0;
