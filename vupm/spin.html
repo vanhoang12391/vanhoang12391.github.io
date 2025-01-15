@@ -435,27 +435,27 @@
       var start;
       function checkPrize(){
         $('.prize').removeClass('unactive');
-        if(countSpin == 4)
-          {
-            $('.prize-4').addClass('unactive');
-          }
-          else if(countSpin == 7)
-          {
-            $('.prize-4').addClass('unactive');
-            $('.prize-3').addClass('unactive');
-          }
-          else if(countSpin == 9)
-          {
-            $('.prize-4').addClass('unactive');
-            $('.prize-3').addClass('unactive');
-            $('.prize-2').addClass('unactive');
-          }
-          else if (countSpin == 10)
+        if (countSpin >= 10)
           {
             $('.prize-4').addClass('unactive');
             $('.prize-3').addClass('unactive');
             $('.prize-2').addClass('unactive');
             $('.prize-1').addClass('unactive');
+          }
+          else if(countSpin >= 9)
+          {
+            $('.prize-4').addClass('unactive');
+            $('.prize-3').addClass('unactive');
+            $('.prize-2').addClass('unactive');
+          }
+          else if(countSpin >= 7)
+          {
+            $('.prize-4').addClass('unactive');
+            $('.prize-3').addClass('unactive');
+          }
+          else if(countSpin >= 4)
+          {
+            $('.prize-4').addClass('unactive');
           }
       }
     $(document).keypress(function (e) {
